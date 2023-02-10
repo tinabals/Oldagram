@@ -28,3 +28,16 @@ const posts = [
     }
 ]
 
+const section = document.querySelector('section')
+
+let sectionContent = ""
+for (let i=0; i < posts.length; i++){
+    sectionContent += `<img src='${posts[i].avatar}' />
+    <h4> ${posts[i].name} </h4>
+    <p> ${posts[i].location} </p>
+    <img src='${posts[i].post}'/>
+    <img src='~/images/icon-dm.png' />
+    
+    `
+}
+section.innerHTML = sectionContent
