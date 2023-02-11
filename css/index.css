@@ -1,18 +1,82 @@
 html, body {
-    margin: 0 auto;
+    margin: 0;
     padding: 0;
     font-family: 'Source Sans Pro', sans-serif;
     box-sizing: border-box;
-    width:375px;
+    background-color: #ededed;
 }
+
 
 header{
-    padding: 15px 15px;
+    padding: 5px 0;
+    margin-top:20px;
     border-bottom: 1px solid #C6C6C6;
+    box-sizing: border-box;
+    height:67px;
+}
+main{
+    padding:5px 0
 }
 
+footer{
+    border-bottom: 20px solid #ededed;
+  }
+
+
+
+
+  /* Typography */
+
+.comments{
+    margin-left:5px;
+}
+
+h3,.comments{
+    font-size:13px;
+    line-height: 16px;
+}
+
+h3{
+    font-weight: 700;
+}
+
+.username-caption h3, p{
+    margin-top:0;
+}
+
+/*end of Typography*/
+  
+  /* containers */
+.page-wrapper{
+    width:375px;
+    margin: 10px auto;
+    background: #fff;
+}
+  
+.container{
+     padding: 0 13px 0 13px;
+  }
+.user-info-container{
+      display: flex;
+      align-items: center;    
+    }
+
+.icons-container{
+        display: flex;
+        width:105px;
+        height:23px;
+        justify-content: space-between;
+        place-items: center;
+    }
+.post-image-container{
+        height:375px;
+        margin-bottom:20px;
+    }
+  /*end of containers */
+
+    /* images */
 .oldagram-logo{
-    width:127px;    
+    width:127px;  
 }
 
 .my-img{
@@ -26,3 +90,41 @@ header{
     justify-content: space-between;
     place-items: center;
 }
+
+.avatar-image{
+    width:34px;
+    height:34px;
+    border-radius: 50%;
+    margin-right:10px;
+}
+.post-image{
+    width:375px;
+    height: 375px;
+}
+
+.icon{
+    width:25px;
+    height:25px;
+}
+/* end of images*/
+
+
+.user-fullname{
+    margin-bottom:0;
+    font-size:13px;
+    line-height:16px ;
+}
+
+
+.location-text{
+    font-size: 12px;
+    line-height: 15px;
+}
+
+.username-caption{
+    display: flex;
+    margin-top:0;
+    /* margin-bottom:20px; */
+}
+
+

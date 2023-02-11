@@ -28,16 +28,45 @@ const posts = [
     }
 ]
 
-const section = document.querySelector('section')
+const section = document.querySelector('main');
+let index = ""
 
-let sectionContent = ""
-for (let i=0; i < posts.length; i++){
-    sectionContent += `<img src='${posts[i].avatar}' />
-    <h4> ${posts[i].name} </h4>
-    <p> ${posts[i].location} </p>
-    <img src='${posts[i].post}'/>
-    <img src='~/images/icon-dm.png' />
-    
-    `
+const  renderPost = () => {
+    let sectionContent = ""
+    for (let i=0; i < posts.length; i++){
+        sectionContent += `
+        <section class="section-container">
+        <div class="container">
+                <div class="user-info-container">
+                <img class="avatar-image" src='${posts[i].avatar}' />
+                <div class="location-and-name">
+                <h3 class="user-fullname"> ${posts[i].name} </h3>
+                <p class="location-text"> ${posts[i].location} </p>
+                    </div>    
+                </div>  
+            </div>    
+            <div class="post-image-container">  
+                <img class="post-image" src='${posts[i].post}'/>
+            </div>    
+        </section>
+        <footer>
+            <div class= "container">
+            <div class="icons-container">
+            <img class="like-icon icon" src='../images/icon-heart.png' />
+            <img class="comment-icon icon" src='../images/icon-comment.png' />
+            <img class="share-icon icon" src='../images/icon-dm.png' />
+            </div>
+                    <h3 id="like-count-${i}" onclick='increaseLike()'> ${posts[i].likes} likes </h3>
+                    <div class="username-caption">
+                    <h3 class="user-name"> ${posts[i].username} </h3>
+                    <p class="comments"> ${posts[i].comment} </p>
+                    </div>    
+                    </div>    
+                    </footer>    
+                    `
+                    index = i
+                }
+                section.innerHTML = sectionContent
 }
-section.innerHTML = sectionContent
+console.log(index, "hi")
+renderPost()
