@@ -18,9 +18,6 @@ main{
     padding:5px 0
 }
 
-footer{
-    border-bottom: 20px solid #ededed;
-  }
 
 
 
@@ -68,10 +65,15 @@ h3{
         justify-content: space-between;
         place-items: center;
     }
+
 .post-image-container{
         height:375px;
         margin-bottom:20px;
     }
+
+.section-container-two.border-bottom {
+        border-bottom: 20px solid #ededed;
+      }
   /*end of containers */
 
     /* images */
@@ -108,6 +110,7 @@ h3{
 }
 /* end of images*/
 
+/* other styles*/
 
 .user-fullname{
     margin-bottom:0;
@@ -124,7 +127,11 @@ h3{
 .username-caption{
     display: flex;
     margin-top:0;
-    /* margin-bottom:20px; */
 }
 
-
+.icon{
+    cursor: pointer;
+}
+.icon:hover{
+    opacity: 0.6;
+}

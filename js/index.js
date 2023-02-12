@@ -1,4 +1,4 @@
-const posts = [
+let posts = [
     {
         name: "Vincent van Gogh",
         username: "vincey1853",
@@ -29,13 +29,19 @@ const posts = [
 ]
 
 const section = document.querySelector('main');
-let index = ""
+let liked = false
+let count = 0
+
 
 const  renderPost = () => {
+  const storedPosts = JSON.parse(localStorage.getItem("postsArray"));
+  if (storedPosts){
+    posts = storedPosts
+  }
     let sectionContent = ""
     for (let i=0; i < posts.length; i++){
         sectionContent += `
-        <section class="section-container">
+        <section class="section-one">
         <div class="container">
                 <div class="user-info-container">
                 <img class="avatar-image" src='${posts[i].avatar}' />
@@ -49,24 +55,91 @@ const  renderPost = () => {
                 <img class="post-image" src='${posts[i].post}'/>
             </div>    
         </section>
-        <footer>
+        <section class="section-container-two ${i !== posts.length - 1 ? "border-bottom" : " "}">
             <div class= "container">
             <div class="icons-container">
-            <img class="like-icon icon" src='../images/icon-heart.png' />
+            <img ondblclick="increaseLike(${i})" class="like-icon-${i} icon" src='../images/icon-heart.png' />
             <img class="comment-icon icon" src='../images/icon-comment.png' />
             <img class="share-icon icon" src='../images/icon-dm.png' />
             </div>
-                    <h3 id="like-count-${i}" onclick='increaseLike()'> ${posts[i].likes} likes </h3>
+                    <h3 class="like-count" > ${posts[i].likes} likes </h3>
                     <div class="username-caption">
                     <h3 class="user-name"> ${posts[i].username} </h3>
                     <p class="comments"> ${posts[i].comment} </p>
                     </div>    
                     </div>    
-                    </footer>    
+            </section>    
                     `
-                    index = i
+                 
                 }
                 section.innerHTML = sectionContent
-}
-console.log(index, "hi")
-renderPost()
+            }
+
+            /* first method to increase like */
+         
+        // const increaseLike = (el) => {
+        //         const iconHeart = document.querySelector(`.like-icon-${el}`)
+        //         const likeCount = document.querySelectorAll(".like-count")[el];
+        //         if (iconHeart.src.endsWith("icon-heart.png")){
+        //             iconHeart.src = '../images/heart.png'
+        //             posts[el].likes++  
+        //         }
+        //         else{
+        //             iconHeart.src='../images/icon-heart.png'
+        //             posts[el].likes--
+        //         }
+        //         likeCount.innerHTML = `${posts[el].likes} likes`
+        //         localStorage.setItem("postsArray", JSON.stringify(posts))
+        //     }
+       
+
+/* Second methods but i prefer this more */
+
+        // const increaseLike = (el) => {
+        //         const iconHeart = document.querySelector(`.like-icon-${el}`)
+        //         const likeCount = document.querySelectorAll(".like-count")[el];
+        //         if (count === 0){
+        //             count++
+        //             iconHeart.src = '../images/heart.png'
+        //             posts[el].likes++  
+        //             likeCount.innerHTML = `${posts[el].likes} likes`
+        //         }
+        //         else{
+        //             iconHeart.src='../images/icon-heart.png'
+        //             posts[el].likes--
+        //             likeCount.innerHTML = `${posts[el].likes} likes`
+        //             count = 0
+                
+        //         }
+        //         localStorage.setItem("postsArray", JSON.stringify(posts))
+        //     }
+
+           
+
+            /* Third method */
+
+     const increaseLike = (el) => {
+                let image = null
+                liked = !liked
+                const iconHeart = document.querySelector(`.like-icon-${el}`)
+                const likeCount = document.querySelectorAll(".like-count")[el];
+                if (liked){
+                    iconHeart.src = '../images/heart.png'
+                    image = iconHeart.src = '../images/heart.png'
+                    posts[el].likes++  
+                    likeCount.innerHTML = `${posts[el].likes} likes`
+                    liked = true
+                }
+                else{
+                    iconHeart.src='../images/icon-heart.png'
+                    image = iconHeart.src='../images/icon-heart.png'
+                    posts[el].likes--
+                    likeCount.innerHTML = `${posts[el].likes} likes`
+                    liked = false      
+                }
+                localStorage.setItem("postsArray", JSON.stringify(posts))
+                // localStorage.setItem("image", image)
+            }
+
+            renderPost()
+
