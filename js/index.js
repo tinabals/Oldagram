@@ -58,7 +58,7 @@ const  renderPost = () => {
         <section class="section-container-two ${i !== posts.length - 1 ? "border-bottom" : " "}">
             <div class= "container">
             <div class="icons-container">
-            <img ondblclick="increaseLike(${i})" class="like-icon-${i} icon" src='../images/icon-heart.png' />
+            <img onclick="increaseLike(${i})" class="like-icon-${i} icon" src='../images/icon-heart.png' />
             <img class="comment-icon icon" src='../images/icon-comment.png' />
             <img class="share-icon icon" src='../images/icon-dm.png' />
             </div>
